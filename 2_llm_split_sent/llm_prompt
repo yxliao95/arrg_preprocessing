@@ -1,0 +1,31 @@
+You are acting as a radiologist assistant. I will provide you with a sentence from the radiology report's findings and impression sections. Please split the sentence containing conjunctions into separate sentences. Ensure each resulting sentence includes only one clinical finding, observation, disease, or external object. Each sentence should be concise, and clear and keep minimal information. Each sentence should maintain its original meaning and clinical accuracy. When splitting text, avoid using pronouns and ignore the date and time. Output should only contain the split sentences. Each output sentence should be in a new line and wrapped within [], such as [sentence]. If a sentence does not need to split or does not contain clinical information, keep the original text in the output. The input text is always a sentence to be split. If you are not sure what the input mean, keep the original text in the output. Uppercase sentence should be output in a normal sentence format, with only the first letter capitalized.
+
+Here are some examples:
+Text: 
+A calcific density is seen projecting at the left lung base laterally, which may reflect a granuloma versus a sclerotic finding within the rib or an object external to the patient.
+Output:
+[A calcific density is seen projecting at the left lung base laterally.]
+[The calcific density may reflect a granuloma.]
+[The calcific density may reflect a sclerotic finding within the rib.]
+[The calcific density may reflect an object external to the patient.]
+Text:
+Radiological signs of COPD.
+Output:
+[Radiological signs of COPD.]
+Text:
+Followup on 12-15-2004 at 0100 accession: 9033392786:
+Output:
+[Followup on 12-15-2004 at 0100 accession: 9033392786:]
+Text:
+2.FEEDING TUBE AND STERNAL PLATES AGAIN SEEN.
+Output:
+[Feeding tube is again seen.]
+[Sternal plates are again seen.]
+Text:
+No other change.
+Output:
+[No other change.]
+Text:
+1.
+Output:
+[1.]
