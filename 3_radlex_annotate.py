@@ -1,3 +1,8 @@
+"""
+匹配逻辑：id = radlex_id+start+end 如果有exact match，就忽略fuzzy match。但没有考虑不同id的match情况。
+比如 hemithorax，即能exact match到 hemithorax，也能fuzzy match到 hemothorax
+"""
+
 import json
 import os
 import threading
@@ -220,11 +225,11 @@ def set_match_component(nlp, matcher, radlex_id2name_dict):
             match_type = match_type.split("#")[0]
 
             # The matching order is alwarys: text match -> lower_text match -> lemma match -> fuzzy_lemma match
-            # We only keep the first matched result for each matched span. e.g. if text matched, we skip the reast of the matches.
+            # We only keep the first matched result for each matched span (unique_id). e.g. if text matched, we skip the reast of the matches.
             unique_id = f"{radlex_id}@{start}|{end}"
             if unique_id not in doc._.matched_radlex_dict:
                 doc._.matched_radlex_dict[unique_id] = {
-                    "match_type": match_type,
+                    "match_type": match_type,  # "text", "lower_text", "lemma", "fuzzy_lemma"
                     "radlex_id": radlex_id,
                     "radlex_name": radlex_id2name_dict[radlex_id],
                     "matched_text": span.text,
