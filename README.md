@@ -5,6 +5,7 @@
 - `conda install -c conda-forge spacy`
   - `python -m spacy download en_core_web_sm`
 - `pip install datasets`
+- `pip install matplotlib`
 
 ## Process pipeline
 
